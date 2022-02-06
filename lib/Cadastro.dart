@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projeto_app/Home.dart';
 import 'package:projeto_app/model/Usuario.dart';
 
@@ -40,17 +41,17 @@ class _CadastroState extends State<Cadastro> {
 
         }else{
           setState(() {
-            _mensagemErro = "A senha precisa ter mais de 6 dígitos";
+            _mensagemErro = "A Senha deve conter pelo menos 6 dígitos";
           });
         }
       }else{
         setState(() {
-          _mensagemErro = "Informe um E-mail válido";
+          _mensagemErro = "Informe o E-mail";
         });
       }
     }else{
       setState(() {
-        _mensagemErro = "Preencha o Nome";
+        _mensagemErro = "Informe o Nome";
       });
     }
 
@@ -66,9 +67,16 @@ class _CadastroState extends State<Cadastro> {
         email: usuario.email,
         password: usuario.senha
 
-    ).then((User){
+    ).then(( FirebaseUser ){
 
-      Navigator.push(
+      //Salvar dados do usuário
+      FirebaseFirestore db = FirebaseFirestore.instance;
+
+      db.collection("usuarios")
+      .doc( FirebaseUser.user!.uid )
+      .set( usuario.toMap() );
+
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => Home()
@@ -160,12 +168,15 @@ class _CadastroState extends State<Cadastro> {
                                     RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(32),
                                 )))))),
-                Text(
-                  _mensagemErro,
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 20
-                  ),
+                Center(
+                  child: Text(
+                    _mensagemErro,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 20
+                    ),
+                  )
                 )
               ],
             )),

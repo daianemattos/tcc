@@ -37,12 +37,12 @@ class _LoginState extends State<Login> {
 
         }else{
           setState(() {
-            _mensagemErro = "Preencha a senha";
+            _mensagemErro = "Senha inválida. Tente novamente.";
           });
         }
     }else{
         setState(() {
-          _mensagemErro = "Informe um E-mail válido";
+          _mensagemErro = "E-mail inválido. Tente novamente.";
         });
     }
   }
@@ -56,9 +56,9 @@ class _LoginState extends State<Login> {
     auth.signInWithEmailAndPassword(
         email: usuario.email,
         password: usuario.senha
-    ).then(( User ){
+    ).then(( FirebaseUser ){
 
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => Home()
@@ -80,6 +80,7 @@ class _LoginState extends State<Login> {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     FirebaseAuth auth = FirebaseAuth.instance;
+    auth.signOut();
 
     User? usuarioLogado = await auth.currentUser;
       if(usuarioLogado != null){
