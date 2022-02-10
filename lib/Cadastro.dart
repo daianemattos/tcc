@@ -6,7 +6,7 @@ import 'package:projeto_app/Home.dart';
 import 'package:projeto_app/model/Usuario.dart';
 
 class Cadastro extends StatefulWidget {
-  const Cadastro({Key? key}) : super(key: key);
+  const Cadastro({Key key}) : super(key: key);
 
   @override
   _CadastroState createState() => _CadastroState();
@@ -73,7 +73,7 @@ class _CadastroState extends State<Cadastro> {
       FirebaseFirestore db = FirebaseFirestore.instance;
 
       db.collection("usuarios")
-      .doc( FirebaseUser.user!.uid )
+      .doc( FirebaseUser.user.uid )
       .set( usuario.toMap() );
 
       Navigator.pushReplacement(

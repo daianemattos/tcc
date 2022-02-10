@@ -1,9 +1,9 @@
 
 class Usuario {
 
-  late String _nome;
-  late String _email;
-  late String _senha;
+  String _nome;
+  String _email;
+  String _senha;
 
   Usuario();
 

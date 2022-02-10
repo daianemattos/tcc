@@ -7,7 +7,7 @@ import 'package:projeto_app/Home.dart';
 import 'package:projeto_app/model/Usuario.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({Key key}) : super(key: key);
 
   @override
   _LoginState createState() => _LoginState();
@@ -82,9 +82,9 @@ class _LoginState extends State<Login> {
     FirebaseAuth auth = FirebaseAuth.instance;
     auth.signOut();
 
-    User? usuarioLogado = await auth.currentUser;
+    User usuarioLogado = await auth.currentUser;
       if(usuarioLogado != null){
-        Navigator.push(
+        Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) => Home()
@@ -107,10 +107,14 @@ class _LoginState extends State<Login> {
           child: Center(
             child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                     padding: EdgeInsets.only(bottom: 32),
-                    child: Image.asset("images/logo.png")),
+                    child: Image.asset(
+                        "images/logo.png",
+                      width: 220.0,
+                    )),
                 Padding(
                     padding: EdgeInsets.only(bottom: 8),
                     child: TextField(
@@ -140,7 +144,6 @@ class _LoginState extends State<Login> {
                 Padding(
                     padding: EdgeInsets.only(top: 16, bottom: 10),
                     child: SizedBox(
-                        width: 330.0,
                         height: 60.0,
                         child: ElevatedButton(
                             onPressed: _validarCampos,
