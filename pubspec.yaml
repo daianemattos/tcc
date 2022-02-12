@@ -30,12 +30,27 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_localizations:
+    sdk: flutter
+
   font_awesome_flutter: '>= 4.7.0'
+
+  # calendar
+  syncfusion_flutter_calendar: ^19.1.59
+  intl: ^0.17.0
+
+  table_calendar: ^3.0.3
+
+  # carousel
+  carousel_slider: ^3.0.0
+  smooth_page_indicator: ^1.0.0+2
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
+  # firebase
   firebase_core: ^1.12.0 #Recursos básicos
   firebase_auth: ^3.3.6 #autenticação
   firebase_storage: ^10.2.6 #armazenamento de arquivos

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_app/Calendario.dart';
 import 'package:projeto_app/Galeria.dart';
 
 class PerfilPet extends StatefulWidget {
@@ -93,7 +94,14 @@ class _PerfilPetState extends State<PerfilPet> {
                         children: [
                           Padding(
                               padding: EdgeInsets.only(top: 10, bottom: 5),
-                            child: Image.asset("images/calendario.png"),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context)=> Calendario())
+                                  );
+                                },
+                                child: Image.asset("images/calendario.png")
+                            ),
                           ),
                           Text("Calendário")
                         ],
