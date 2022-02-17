@@ -29,59 +29,61 @@ class _GaleriaState extends State<Galeria> {
             IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
           ],
         ),
-        body: Center(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                        padding: EdgeInsets.all(32),
-                      child: Text("Floki")
-                    ),
-                  ],
-                ),
-                Padding(
+        body: SingleChildScrollView(
+          child: Center(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.all(20),
+                          child: Text("Floki")
+                      ),
+                    ],
+                  ),
+                  Padding(
                     padding: EdgeInsets.only(top: 20),
-                  child: CarouselSlider.builder(
-                    itemCount: imageList.length,
-                    itemBuilder: (context, index, realIndex) {
-                      final image = imageList[index];
+                    child: CarouselSlider.builder(
+                      itemCount: imageList.length,
+                      itemBuilder: (context, index, realIndex) {
+                        final image = imageList[index];
 
-                      return buildImage(image, index);
-                    },
-                    options: CarouselOptions(
-                      height: 400,
-                      //autoPlay: true,
-                      viewportFraction: 0.9,
-                      enableInfiniteScroll: false,
-                      enlargeCenterPage: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy.height,
-                      onPageChanged: (index, reason) =>
-                          setState(() => activeIndex = index),
+                        return buildImage(image, index);
+                      },
+                      options: CarouselOptions(
+                        height: MediaQuery.of(context).size.height * 0.50,
+                        //autoPlay: true,
+                        viewportFraction: 0.9,
+                        enableInfiniteScroll: false,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        onPageChanged: (index, reason) =>
+                            setState(() => activeIndex = index),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 32),
-                buildIndicator(),
-                Padding(
-                    padding: EdgeInsets.only(top: 20),
-                  child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.90,
-                      height: 50.0,
-                    child: ElevatedButton(
-                        onPressed: (){},
-                        child: Text(
-                            "Adicionar foto"
-                        ),
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Color(0xff478ca0)),
-                        )
-                    )
+                  const SizedBox(height: 32),
+                  buildIndicator(),
+                  Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.90,
+                          height: 50.0,
+                          child: ElevatedButton(
+                              onPressed: (){},
+                              child: Text(
+                                  "ADICIONAR FOTO"
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xff478ca0)),
+                              )
+                          )
+                      )
                   )
-                )
-              ],
-            )
+                ],
+              )
+          )
         )
     );
   }
