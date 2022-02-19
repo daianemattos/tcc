@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_app/Calendario.dart';
 import 'package:projeto_app/Galeria.dart';
+import 'package:projeto_app/Rotina.dart';
 
 class PerfilPet extends StatefulWidget {
   const PerfilPet({Key key}) : super(key: key);
@@ -79,7 +80,14 @@ class _PerfilPetState extends State<PerfilPet> {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(top: 10, bottom: 5),
-                            child: Image.asset("images/rotina.png"),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context)=> Rotina())
+                                  );
+                                },
+                                child: Image.asset("images/rotina.png")
+                            ),
                           ),
                           Text("Rotina")
                         ],

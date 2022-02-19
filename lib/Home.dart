@@ -61,9 +61,10 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(right: 16),
+                    padding: EdgeInsets.only(right: 30),
                     child: IconButton(
                         onPressed: () {},
+                        iconSize: 30,
                         icon: Icon(Icons.add_circle),
                         color: Color(0xff478ca0))),
               ],
