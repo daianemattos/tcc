@@ -2,6 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
+import 'Padrao/PdAppBar.dart';
+import 'Padrao/PdDrawer.dart';
+
 class Galeria extends StatefulWidget {
   const Galeria({Key key}) : super(key: key);
 
@@ -23,12 +26,8 @@ class _GaleriaState extends State<Galeria> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Color(0xff478ca0),
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
-          ],
-        ),
+        appBar: AppBarPadrao(),
+        drawer: DrawerPadrao(),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
@@ -76,7 +75,8 @@ class _GaleriaState extends State<Galeria> {
                               ),
                               style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Color(0xff478ca0)),
+                                    Color(0xff478ca0)
+                                ),
                               )
                           )
                       )

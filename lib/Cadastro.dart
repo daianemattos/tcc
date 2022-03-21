@@ -97,7 +97,7 @@ class _CadastroState extends State<Cadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text("Cadastro"),
+        title: Text("Cadastro"),
         backgroundColor: Color(0xff478ca0),
       ),
       body: Container(
@@ -105,82 +105,100 @@ class _CadastroState extends State<Cadastro> {
           child: Center(
             child: SingleChildScrollView(
                 child: Column(
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(bottom: 32),
-                    child: Image.asset("images/logo.png")),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 8),
-                    child: TextField(
-                      controller: _controllerNome,
-                        autofocus: true,
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(fontSize: 20),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            //filled: true,
-                            //fillColor: Color(0xffecebea),
-                            hintText: "Nome",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))))),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 8),
-                    child: TextField(
-                      controller: _controllerEmail,
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(fontSize: 20),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            //filled: true,
-                            //fillColor: Color(0xffecebea),
-                            hintText: "E-mail",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))))),
-                TextField(
-                  controller: _controllerSenha,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(fontSize: 20),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        //filled: true,
-                        //fillColor: Color(0xffecebea),
-                        hintText: "Senha",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)))),
-                Padding(
-                    padding: EdgeInsets.only(top: 16, bottom: 10),
-                    child: SizedBox(
-                        width: 330.0,
-                        height: 60.0,
-                        child: ElevatedButton(
-                            onPressed: _validarCampos,
-                            child: Text(
-                              "Cadastrar",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color(0xff478ca0)),
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32),
-                                )))))),
-                Center(
-                  child: Text(
-                    _mensagemErro,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20
+                  children: [
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 32),
+                        child: Image.asset("images/logo.png")
                     ),
-                  )
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: TextField(
+                          controller: _controllerNome,
+                          autofocus: true,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(fontSize: 20),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                              //filled: true,
+                              //fillColor: Color(0xffecebea),
+                              hintText: "Nome",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32)
+                              )
+                          )
+                        )
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: TextField(
+                          controller: _controllerEmail,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(fontSize: 20),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                              //filled: true,
+                              //fillColor: Color(0xffecebea),
+                              hintText: "E-mail",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32)
+                              )
+                          )
+                        )
+                    ),
+                    TextField(
+                      controller: _controllerSenha,
+                      obscureText: true,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(fontSize: 20),
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                          //filled: true,
+                          //fillColor: Color(0xffecebea),
+                          hintText: "Senha",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32)
+                          )
+                      )
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(top: 16, bottom: 10),
+                        child: SizedBox(
+                            width: 330.0,
+                            height: 60.0,
+                            child: ElevatedButton(
+                                onPressed: _validarCampos,
+                                child: Text(
+                                  "Cadastrar",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Color(0xff478ca0)
+                                    ),
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(32),
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    ),
+                    Center(
+                      child: Text(
+                        _mensagemErro,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20
+                        ),
+                      )
+                    )
+                  ],
                 )
-              ],
-            )),
-          )),
+            ),
+          )
+      ),
     );
   }
 }
