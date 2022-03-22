@@ -80,7 +80,14 @@ class _PerfilPetState extends State<PerfilPet> {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(top: 10, bottom: 5),
-                          child: Image.asset("images/rotina.png"),
+                          child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context)=> Rotina())
+                                );
+                              },
+                              child: Image.asset("images/rotina.png")
+                          ),
                         ),
                         Text("Rotina")
                       ],

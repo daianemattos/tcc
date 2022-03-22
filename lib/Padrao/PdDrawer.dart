@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:projeto_app/Login.dart';
 import '../Calendario.dart';
 import '../Galeria.dart';
 import '../Home.dart';
 import '../PerfilPet.dart';
+import '../Rotina.dart';
 
 class DrawerPadrao extends StatefulWidget {
   const DrawerPadrao({key}) : super(key: key);
@@ -13,12 +16,21 @@ class DrawerPadrao extends StatefulWidget {
 }
 
 class _DrawerPadraoState extends State<DrawerPadrao> {
+
+  deslogar () async{
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    await auth.signOut();
+  }
+
   String get email => 'jonny@gmail.com';
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        backgroundColor: Color(0xFFBBDEFB),
+        backgroundColor: Colors.white,//Color(0xFFBBDEFB),
         child: ListView(
             padding:EdgeInsets.zero,
             children:[
@@ -49,7 +61,7 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
               ListTile(
                 leading: Icon(
                   Icons.home,
-                  color: Color(0xff478ca0),
+                  color: Color(0xffffbd59),
                 ),
                 title: Text(
                   "Início",
@@ -63,7 +75,7 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
               ListTile(
                   leading: Icon(
                     Icons.pets,
-                    color: Color(0xff478ca0),
+                    color: Color(0xffffbd59),
                   ),
                   title: Text(
                     "Perfil Pet",
@@ -76,8 +88,8 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
               ),
               ListTile(
                 leading: Icon(
-                  Icons.calendar_today,
-                  color: Color(0xff478ca0),
+                  Icons.date_range,
+                  color: Color(0xffffbd59),
                 ),
                 title: Text(
                   "Calendário",
@@ -91,7 +103,7 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
               ListTile(
                 leading: Icon(
                   Icons.photo_camera,
-                  color: Color(0xff478ca0),
+                  color: Color(0xffffbd59),
                 ),
                 title: Text(
                   "Galeria",
@@ -99,6 +111,34 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Galeria())
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.assignment,
+                  color: Color(0xffffbd59),
+                ),
+                title: Text(
+                  "Rotina",
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Rotina())
+                  );
+                },
+              ),ListTile(
+                leading: Icon(
+                  Icons.exit_to_app,
+                  color: Color(0xffffbd59),
+                ),
+                title: Text(
+                  "Sair",
+                ),
+                onTap: () {
+                  deslogar;
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login())
                   );
                 },
               ),
