@@ -16,6 +16,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController _controllerEmail = TextEditingController();
   TextEditingController _controllerSenha = TextEditingController();
+  String senha = '';
+  bool _visibilidadeSenha = false;
   String _mensagemErro = "";
 
   _validarCampos(){
@@ -97,6 +99,8 @@ class _LoginState extends State<Login> {
   void initState() {
     _verificarUsuarioLogado();
     super.initState();
+
+    _controllerSenha.addListener(() => setState(() {}));
   }
 
   @override
@@ -136,14 +140,22 @@ class _LoginState extends State<Login> {
                 ),
                 TextField(
                     controller: _controllerSenha,
-                    obscureText: true,
+                    obscureText: !_visibilidadeSenha,
                     keyboardType: TextInputType.text,
                     style: TextStyle(fontSize: 20),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        //filled: true,
-                        //fillColor: Color(0xffecebea),
                         hintText: "Senha",
+                        suffixIcon: IconButton(
+                          icon: _visibilidadeSenha == false
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              _visibilidadeSenha = !_visibilidadeSenha;
+                            });
+                          },
+                        ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(32)
                         )

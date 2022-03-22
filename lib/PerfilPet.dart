@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_app/Calendario.dart';
 import 'package:projeto_app/Galeria.dart';
+import 'package:projeto_app/Rotina.dart';
 
 import 'Padrao/PdAppBar.dart';
 import 'Padrao/PdDrawer.dart';
