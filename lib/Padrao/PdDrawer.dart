@@ -17,12 +17,20 @@ class DrawerPadrao extends StatefulWidget {
 
 class _DrawerPadraoState extends State<DrawerPadrao> {
 
-  deslogar () async{
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
-    FirebaseAuth auth = FirebaseAuth.instance;
+  _deslogar () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp();
+      FirebaseAuth auth = FirebaseAuth.instance;
 
-    await auth.signOut();
+     auth.signOut();
+
+     User user = await auth.currentUser;
+     if(user == null) {
+       print('deslogado');
+       Navigator.pushReplacement(context,
+           MaterialPageRoute(builder: (context) => Login())
+       );
+     }
   }
 
   String get email => 'jonny@gmail.com';
@@ -135,12 +143,7 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
                 title: Text(
                   "Sair",
                 ),
-                onTap: () {
-                  deslogar;
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login())
-                  );
-                },
+                onTap: _deslogar
               ),
             ]
         )
