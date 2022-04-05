@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:projeto_app/Login.dart';
+import 'package:projeto_app/MeusPets.dart';
+import 'package:projeto_app/OngsFavoritas.dart';
 import '../Calendario.dart';
 import '../Galeria.dart';
 import '../Home.dart';
@@ -66,6 +68,7 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
                     )
                 ),
               ),
+
               ListTile(
                 leading: Icon(
                   Icons.home,
@@ -80,20 +83,22 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
                   );
                 },
               ),
+
               ListTile(
                   leading: Icon(
                     Icons.pets,
                     color: Color(0xffffbd59),
                   ),
                   title: Text(
-                    "Perfil Pet",
+                    "Meus Pets",
                   ),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PerfilPet())
+                      MaterialPageRoute(builder: (context) => MeusPets())
                   );
                 },
               ),
+
               ListTile(
                 leading: Icon(
                   Icons.date_range,
@@ -108,34 +113,23 @@ class _DrawerPadraoState extends State<DrawerPadrao> {
                   );
                 },
               ),
+
               ListTile(
                 leading: Icon(
-                  Icons.photo_camera,
+                  Icons.home_work,
                   color: Color(0xffffbd59),
                 ),
                 title: Text(
-                  "Galeria",
+                  "Ongs Favoritas",
                 ),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Galeria())
+                      MaterialPageRoute(builder: (context) => OngsFavoritas())
                   );
                 },
               ),
+
               ListTile(
-                leading: Icon(
-                  Icons.assignment,
-                  color: Color(0xffffbd59),
-                ),
-                title: Text(
-                  "Rotina",
-                ),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Rotina())
-                  );
-                },
-              ),ListTile(
                 leading: Icon(
                   Icons.exit_to_app,
                   color: Color(0xffffbd59),
