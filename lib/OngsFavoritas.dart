@@ -27,7 +27,12 @@ class _OngsFavoritasState extends State<OngsFavoritas> {
 
                           ListTile(
                             contentPadding: EdgeInsets.all(0),
-                            title: Text("ONG - SOS AMIGO BICHO"),
+                            title: Text(
+                              "ONG - SOS AMIGO BICHO",
+                              style:
+                              TextStyle(fontSize: 22, color: Color(0xff777777)),
+                            ),
+
                             subtitle: Text("(42)99999-9999"),
 
                             onTap: () {
@@ -43,9 +48,12 @@ class _OngsFavoritasState extends State<OngsFavoritas> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
                                         children: <Widget>[
-                                          const Text('Modal BottomSheet'),
+                                          const Text('ONG SOS AMIGO BICHO'),
                                           ElevatedButton(
-                                            child: const Text('Close BottomSheet'),
+                                            child: const Text('Close BottomSheet',
+                                            style:
+                                              TextStyle(fontSize: 22, color: Color(0xff777777)),
+                                            ),
                                             onPressed: () => Navigator.pop(context),
                                           )
                                         ],

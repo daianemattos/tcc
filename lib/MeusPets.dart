@@ -28,8 +28,7 @@ class _MeusPetsState extends State<MeusPets> {
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      child: Text(
-                        "MEUS PETS",
+                      child: Text("MEUS PETS",
                         style:
                             TextStyle(fontSize: 30, color: Color(0xff777777)),
                       ),
