@@ -82,17 +82,16 @@ class _LoginState extends State<Login> {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     FirebaseAuth auth = FirebaseAuth.instance;
-    auth.signOut();
 
     User usuarioLogado = await auth.currentUser;
-      if(usuarioLogado != null){
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Home()
-            )
-        );
-      }
+    if(usuarioLogado != null){
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Home()
+          )
+      );
+    }
   }
 
   @override
@@ -107,55 +106,74 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          padding: EdgeInsets.all(16),
-          child: Center(
-            child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
               children: [
                 Padding(
-                    padding: EdgeInsets.only(bottom: 32),
-                    child: Image.asset(
-                        "images/logo.png",
-                      width: 220.0,
-                    )),
+                  padding: EdgeInsets.only(bottom: 32),
+                  child: Image.asset(
+                      "images/logo.png",
+                    width: 220.0,
+                  )
+                ),
                 Padding(
                     padding: EdgeInsets.only(bottom: 8),
-                    child: TextField(
-                        controller: _controllerEmail,
-                        autofocus: true,
-                        keyboardType: TextInputType.emailAddress,
-                        style: TextStyle(fontSize: 20),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                            //filled: true,
-                            //fillColor: Color(0xffecebea),
-                            hintText: "E-mail",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(32))))),
-                TextField(
-                    controller: _controllerSenha,
-                    obscureText: !_visibilidadeSenha,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(fontSize: 20),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        hintText: "Senha",
-                        suffixIcon: IconButton(
-                          icon: _visibilidadeSenha == false
-                              ? Icon(Icons.visibility_off)
-                              : Icon(Icons.visibility),
-                          onPressed: () {
-                            setState(() {
-                              _visibilidadeSenha = !_visibilidadeSenha;
-                            });
-                          },
-                        ),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(32)))),
-                Padding(
-                    padding: EdgeInsets.only(top: 16, bottom: 10),
                     child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.92,
+                      height: 60.0,
+                      child: TextField(
+                          controller: _controllerEmail,
+                          autofocus: true,
+                          keyboardType: TextInputType.emailAddress,
+                          style: TextStyle(fontSize: 20),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                              //filled: true,
+                              //fillColor: Color(0xffecebea),
+                              hintText: "E-mail",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(32)
+                              )
+                          )
+                      )
+                    )
+                ),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 24),
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.92,
+                        height: 60.0,
+                        child: TextField(
+                            controller: _controllerSenha,
+                            obscureText: !_visibilidadeSenha,
+                            keyboardType: TextInputType.text,
+                            style: TextStyle(fontSize: 20),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                                hintText: "Senha",
+                                suffixIcon: IconButton(
+                                  icon: _visibilidadeSenha == false
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility),
+                                  onPressed: () {
+                                    setState(() {
+                                      _visibilidadeSenha = !_visibilidadeSenha;
+                                    });
+                                  },
+                                ),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(32)
+                                )
+                            )
+                        ),
+                    )
+                ),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.92,
                         height: 60.0,
                         child: ElevatedButton(
                             onPressed: _validarCampos,
@@ -166,12 +184,17 @@ class _LoginState extends State<Login> {
                             ),
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Color(0xff478ca0)),
-                                shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
+                                    Color(0xff478ca0)
+                                ),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(32),
-                                )))))),
+                                        borderRadius: BorderRadius.circular(32),
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
                 Center(
                   child: GestureDetector(
                     child: Text("Esqueceu a senha?"),
@@ -219,15 +242,19 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: Center(
-                        child: Text(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Center(
+                    child: Text(
                       _mensagemErro,
                       style: TextStyle(color: Colors.red, fontSize: 20),
-                    )))
+                    )
+                  )
+                )
               ],
-            )),
-          )),
+            )
+          ),
+        )
+      ),
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_app/NovaRotina.dart';
 
+import 'Padrao/PdAppBar.dart';
+import 'Padrao/PdDrawer.dart';
+
 class Rotina extends StatefulWidget {
   const Rotina({Key key}) : super(key: key);
 
@@ -13,12 +16,8 @@ class _RotinaState extends State<Rotina> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Color(0xff478ca0),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
-        ],
-      ),
+      appBar: AppBarPadrao(),
+      drawer: DrawerPadrao(),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(20),

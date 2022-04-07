@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import 'Padrao/PdAppBar.dart';
+import 'Padrao/PdDrawer.dart';
+
 class Calendario extends StatefulWidget {
   const Calendario({Key key}) : super(key: key);
 
@@ -12,32 +15,28 @@ class _CalendarioState extends State<Calendario> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xff478ca0),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
-        ],
-      ),
+      appBar: AppBarPadrao(),
+      drawer: DrawerPadrao(),
       body: Container(
           child: Padding(
-              padding: EdgeInsets.all(10),
-              child: SfCalendar(
-                view: CalendarView.month,
-                //cellBorderColor: Colors.transparent,
-                headerHeight: 60,
-                viewHeaderHeight: 60,
+            padding: EdgeInsets.all(10),
+            child: SfCalendar(
+              view: CalendarView.month,
+              //cellBorderColor: Colors.transparent,
+              headerHeight: 60,
+              viewHeaderHeight: 60,
 
-                headerStyle: CalendarHeaderStyle(
-                  textStyle: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w400
-                  )
-                ),
-
-                dataSource: MeetingDataSource(getAppointments()),
+              headerStyle: CalendarHeaderStyle(
+                textStyle: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400
+                )
               ),
-            )
+
+              dataSource: MeetingDataSource(getAppointments()),
+            ),
+          )
         ),
     );
   }
